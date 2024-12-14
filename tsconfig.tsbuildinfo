@@ -1,0 +1,1 @@
+{"root":["./src/app.ts","./src/index.ts","./src/db/firestore.ts","./src/routes/healthcheck.ts","./src/routes/users.ts"],"version":"5.7.2"}
