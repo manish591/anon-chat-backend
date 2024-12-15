@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { db } from "../db/firestore";
-import { send } from "process";
 
 const router = Router();
 
@@ -51,9 +50,9 @@ router.get("/:userid", async function (req, res) {
 
 router.post("/messages", async function (req, res) {
   try {
-    const { userId, text, senderId } = req.body as MessageBody;
+    const body = req.body as MessageBody;
 
-    if (!userId || !text || !senderId) {
+    if (!body.userId || !body.text || !body.senderId) {
       res.json({
         message: "failed",
       });
@@ -62,15 +61,14 @@ router.post("/messages", async function (req, res) {
 
     const docRef = db.collection("messages");
     await docRef.add({
-      userId,
-      text,
-      senderId
+      userId: body.userId,
+      text: body.text,
+      senderId: body.senderId
     });
 
     res.json({
       message: "success"
     });
-
   } catch (err) {
     console.log("Error occured", err);
     res.json({
