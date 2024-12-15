@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import usersRouter from "./routes/users";
+import healthCheckRouter from "./routes/healthcheck";
 
 const app = express();
 
@@ -9,5 +10,6 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 app.use("/users", usersRouter);
+app.use("/healthcheck", healthCheckRouter);
 
 export default app;
