@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install": "pnpm install",
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
+    "build": "pnpm run install & tsc",
     "start": "node ./dist/index.js"
   },
   "keywords": [],
